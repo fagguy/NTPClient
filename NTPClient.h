@@ -5,6 +5,7 @@
 #include <Udp.h>
 
 #define SEVENZYYEARS 2208988800UL
+#define LEAP_YEAR(Y)     ( (Y>0) && !(Y%4) && ( (Y%100) || !(Y%400) ) )
 #define NTP_PACKET_SIZE 48
 #define NTP_DEFAULT_LOCAL_PORT 1337
 
@@ -91,9 +92,19 @@ class NTPClient {
     void setUpdateInterval(unsigned long updateInterval);
 
     /**
+     * @return date formatted like `yyyy-mm-dd`
+     */
+    String getFormattedDate() const;
+
+    /**
      * @return time formatted like `hh:mm:ss`
      */
     String getFormattedTime() const;
+
+    /**
+     * @return time in seconds since Jan. 1, 1970, at the GMT
+     */
+    unsigned long getUTCEpochTime() const;
 
     /**
      * @return time in seconds since Jan. 1, 1970
