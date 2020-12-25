@@ -104,7 +104,7 @@ class NTPClient {
     /**
      * @return time in seconds since Jan. 1, 1970, at the GMT
      */
-    unsigned long getUTCEpochTime() const;
+    unsigned long getGmtEpochTime() const;
 
     /**
      * @return time in seconds since Jan. 1, 1970
